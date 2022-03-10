@@ -213,10 +213,11 @@ class ComplicatedImageDemo extends StatelessWidget {
       appBar: AppBar(title: Text('Complicated image slider demo')),
       body: Container(
         child: CarouselSlider(
+          distortionValue: 0.9,
           options: CarouselOptions(
             autoPlay: true,
             aspectRatio: 2.0,
-            enlargeCenterPage: true,
+            // enlargeCenterPage: true,
           ),
           items: imageSliders,
         ),
@@ -381,6 +382,7 @@ class OnDemandCarouselDemo extends StatelessWidget {
       appBar: AppBar(title: Text('On-demand carousel demo')),
       body: Container(
           child: CarouselSlider.builder(
+        distortionValue: 1,
         itemCount: 100,
         options: CarouselOptions(
           aspectRatio: 2.0,
@@ -486,6 +488,7 @@ class _PrefetchImageDemoState extends State<PrefetchImageDemo> {
       appBar: AppBar(title: Text('Prefetch image slider demo')),
       body: Container(
           child: CarouselSlider.builder(
+        distortionValue: 1,
         itemCount: images.length,
         options: CarouselOptions(
           autoPlay: true,
@@ -615,6 +618,7 @@ class MultipleItemDemo extends StatelessWidget {
       appBar: AppBar(title: Text('Multiple item in one slide demo')),
       body: Container(
           child: CarouselSlider.builder(
+        distortionValue: 1,
         options: CarouselOptions(
           aspectRatio: 2.0,
           enlargeCenterPage: false,

@@ -24,6 +24,8 @@ class CarouselSlider extends StatefulWidget {
   /// The widgets to be shown in the carousel of default constructor
   final List<Widget>? items;
 
+  final double? distortionValue;
+
   /// The widget item builder that will be used to build item on demand
   /// The third argument is the PageView's real index, can be used to cooperate
   /// with Hero.
@@ -38,6 +40,7 @@ class CarouselSlider extends StatefulWidget {
       {required this.items,
       required this.options,
       carouselController,
+      this.distortionValue,
       Key? key})
       : itemBuilder = null,
         itemCount = items != null ? items.length : 0,
@@ -50,6 +53,7 @@ class CarouselSlider extends StatefulWidget {
       {required this.itemCount,
       required this.itemBuilder,
       required this.options,
+      required this.distortionValue,
       carouselController,
       Key? key})
       : items = null,
@@ -67,6 +71,8 @@ class CarouselSliderState extends State<CarouselSlider>
   Timer? timer;
 
   CarouselOptions get options => widget.options;
+
+  double get distortiomValue => widget.distortionValue ?? 1;
 
   CarouselState? carouselState;
 
@@ -288,7 +294,7 @@ class CarouselSliderState extends State<CarouselSlider>
               ? (widget.items!.length > 0 ? widget.items![index] : Container())
               : widget.itemBuilder!(context, index, idx),
           builder: (BuildContext context, child) {
-            double distortionValue = 1.0;
+            double distortionValue = distortiomValue;
             // if `enlargeCenterPage` is true, we must calculate the carousel item's height
             // to display the visual effect
             if (widget.options.enlargeCenterPage != null &&
